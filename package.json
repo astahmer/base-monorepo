@@ -1,0 +1,37 @@
+{
+    "name": "base-monorepo",
+    "private": true,
+    "version": "0.0.0",
+    "workspaces": {
+        "packages": [
+            "docs",
+            "packages/*"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/astahmer/base-monorepo.git"
+    },
+    "author": "Alexandre Stahmer <alexandre.stahmer@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "yarn workspaces foreach -ptiv --no-private run test",
+        "test:coverage": "yarn workspaces foreach -ptiv --no-private run test:coverage",
+        "build": "yarn workspaces foreach -ptiv --no-private run build",
+        "dev": "yarn workspace @base-monorepo/core dev",
+        "release:dry": "yarn standard-version --dry-run"
+    },
+    "importSort": {
+        ".js, jsx, .ts, .tsx": {
+            "options": {
+                "ignoreTsConfig": true,
+                "extraAliases": [
+                    "@base-monorepo/*"
+                ]
+            }
+        }
+    },
+    "devDependencies": {
+        "standard-version": "^9.0.0"
+    }
+}
